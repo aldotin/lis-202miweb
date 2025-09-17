@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sierra</title>
+  <link rel="stylesheet" href="sierra.css">
+  <style>
+    /* Efecto de transición para el cambio de opacidad */
+    #imagen {
+      transition: opacity 0.5s ease-in-out;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      padding: 20px;
+      background: #8b0000;
+      color: white;
+    }
+
+    .slideshow {
+      margin: 20px auto;
+      width: 80%;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Danzas Típicas de la Sierra Peruana</h1>
+    <p>
+      La sierra peruana es una región rica en historia y tradiciones, donde convergen influencias ancestrales andinas y coloniales.
+      Sus danzas expresan una fuerte relación con la tierra y la Pachamama, combinando rituales agrícolas con festividades religiosas
+      que reflejan la identidad cultural de los pueblos andinos.
+    </p>
+  </header>
+
+  <div class="slideshow">
+    <img id="imagen" src="Sierra/mosey.jpg" alt="Foto actual">
+  </div>
+
+  <script>
+    // Lista de imágenes (asegúrate que la carpeta se llame "Sierra" con S mayúscula)
+    const imagenes = [
+      "Sierra/caguey.jpg",
+      "Sierra/losey.jpg",
+      "Sierra/monsey.jpg",
+      "Sierra/rochey.jpg",
+      "Sierra/tibua.jpg"
+    ];
+
+    let indice = 0;
+    const img = document.getElementById("imagen");
+
+    function mostrarSiguienteFoto() {
+      // Ocultar la imagen
+      img.style.opacity = 0;
+
+      setTimeout(() => {
+        img.src = imagenes[indice];
+        img.style.opacity = 1;
+
+        // Avanzar al siguiente índice
+        indice = (indice + 1) % imagenes.length;
+      }, 500);
+    }
+
+    // Cambiar imagen cada 3 segundos
+    setInterval(mostrarSiguienteFoto, 3000);
+  </script>
+</body>
+</html>
